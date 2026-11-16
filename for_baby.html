@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#08030e" />
+<title>For Baby ♡</title>
+<style>
+  :root { color-scheme: dark; --pink:#ff59c7; --hot:#ff2fa8; --soft:#ffc4ef; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; width:100%; min-height:100%; background:#08030e; overflow:hidden; }
+  body { font-family: Georgia, 'Times New Roman', serif; color:#fff1fb; }
+  #space { position:fixed; inset:0; width:100%; height:100%; display:block; }
+  .vignette { position:fixed; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 48%, transparent 20%, rgba(4,0,9,.24) 70%, rgba(2,0,5,.82) 100%); }
+  .intro { position:fixed; top:30%; left:0; right:0; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:18px 24px; pointer-events:none; }
+  .eyebrow { font: 11px/1.4 Arial,sans-serif; letter-spacing:.36em; text-transform:uppercase; color:#efa9e0; opacity:.9; margin-bottom:12px; text-shadow:0 0 12px #ff55c9; }
+  h1 { margin:0; font-size:clamp(46px, 13vw, 82px); font-weight:400; line-height:1; letter-spacing:.02em; color:#fff0fb; text-shadow:0 0 9px #fff, 0 0 22px #ff45c6, 0 0 54px #f500a7; }
+  .subtitle { margin-top:14px; font: 12px/1.7 Arial,sans-serif; letter-spacing:.2em; text-transform:uppercase; color:#ffd6f2; text-shadow:0 0 13px #ff38b9; }
+  .hint { position:fixed; bottom:calc(30px + env(safe-area-inset-bottom)); left:0; right:0; text-align:center; font:11px/1.5 Arial,sans-serif; letter-spacing:.18em; color:rgba(255,220,245,.76); text-transform:uppercase; animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:.45} 50%{opacity:1} }
+  .open-button { pointer-events:auto; margin-top:27px; border:1px solid rgba(255,175,230,.6); border-radius:999px; padding:13px 23px; background:rgba(64,9,54,.4); color:#fff1fb; font:11px Arial,sans-serif; letter-spacing:.2em; text-transform:uppercase; box-shadow:0 0 20px rgba(255,50,190,.2), inset 0 0 16px rgba(255,70,190,.08); cursor:pointer; backdrop-filter:blur(8px); transition:transform .2s, background .2s, box-shadow .2s; }
+  .open-button:active { transform:scale(.96); background:rgba(135,20,95,.55); }
+  .letter-wrap { position:fixed; inset:0; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(3,0,8,.63); backdrop-filter:blur(9px); }
+  .letter-wrap.show { display:flex; animation:fade .5s ease both; }
+  @keyframes fade { from{opacity:0} to{opacity:1} }
+  .letter { width:min(100%, 410px); max-height:min(78vh, 620px); overflow:auto; position:relative; padding:35px 27px 29px; border:1px solid rgba(255,167,226,.43); border-radius:19px; background:linear-gradient(145deg,rgba(46,9,43,.96),rgba(13,5,23,.97) 70%); text-align:center; box-shadow:0 0 45px rgba(255,43,181,.24), inset 0 0 35px rgba(255,75,194,.08); }
+  .letter:before { content:'♡'; position:absolute; top:12px; left:0; right:0; color:#ff9cde; font-size:18px; text-shadow:0 0 12px #ff38bd; }
+  .letter .small { margin:4px 0 12px; color:#ffaddf; font:10px Arial,sans-serif; letter-spacing:.32em; text-transform:uppercase; }
+  .letter h2 { margin:0 0 17px; color:#fff3fb; font-size:35px; font-weight:400; text-shadow:0 0 15px rgba(255,65,190,.7); }
+  .letter p { margin:0; color:#f8dff0; font-size:16px; line-height:1.8; }
+  .signature { margin-top:23px; color:#ff9edb; font-size:19px; font-style:italic; }
+  .close { margin-top:24px; background:transparent; border:1px solid rgba(255,174,228,.5); color:#ffe5f7; border-radius:999px; padding:10px 20px; font:10px Arial,sans-serif; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; }
+  .footer { position:fixed; bottom:10px; left:0; right:0; text-align:center; font:9px Arial,sans-serif; letter-spacing:.15em; color:rgba(255,195,232,.4); pointer-events:none; }
+  @media (max-height:650px) { .intro{top:24%} .eyebrow{margin-bottom:7px} .subtitle{margin-top:8px} .open-button{margin-top:15px} .letter{padding:30px 22px 22px} .letter p{font-size:14px;line-height:1.65} }
+</style>
+</head>
+<body>
+<canvas id="space" aria-hidden="true"></canvas>
+<div class="vignette"></div>
+<main class="intro">
+  <div class="eyebrow">a little universe, made for</div>
+  <h1>baby <span style="color:#ff8bd5">♡</span></h1>
+  <div class="subtitle">you make my universe brighter</div>
+  <button class="open-button" id="openLetter">open my heart</button>
+</main>
+<div class="hint">tap the button for a little message</div>
+<div class="letter-wrap" id="letterWrap" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+  <section class="letter">
+    <div class="small">a note from my heart</div>
+    <h2 id="letterTitle">Thank you, baby</h2>
+    <p>
+      Thank you for loving me, baby. Thank you for making me feel cared for, appreciated, and special in your own little ways. I hope you know how grateful I am to have your love in my life. I may not always find the perfect words, but I never want you to doubt that I appreciate you. Your love means more to me than I can explain, and I promise not to take it for granted.
+      <br><br>
+      I'm so thankful for you, for every little moment, and simply for being you. Thank you for loving me. I love you, baby. ♡
+    </p>
+    <div class="signature">always grateful for you</div>
+    <button class="close" id="closeLetter">back to our galaxy</button>
+  </section>
+</div>
+<div class="footer">MADE WITH LOVE · JUST FOR BABY</div>
+<script>
+(() => {
+  const canvas = document.getElementById('space');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w = 0, h = 0, dpr = 1, stars = [], heart = [], galaxy = [], floating = [];
+  const pinks = ['#ff55c8','#ff8cdd','#ffd2f2','#e92bb4','#ffb0e8'];
+  const rand = (a,b) => a + Math.random()*(b-a);
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth; h = window.innerHeight;
+    canvas.width = Math.floor(w*dpr); canvas.height = Math.floor(h*dpr);
+    canvas.style.width = w+'px'; canvas.style.height = h+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    stars = Array.from({length:Math.min(230,Math.floor(w*h/3000))},()=>({x:Math.random()*w,y:Math.random()*h,r:rand(.35,1.35),a:rand(.2,.9),p:rand(0,Math.PI*2)}));
+    heart = Array.from({length:900},(_,i)=>{
+      const t = Math.random()*Math.PI*2;
+      const fill = Math.sqrt(Math.random());
+      const x = 16*Math.pow(Math.sin(t),3);
+      const y = 13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
+      return {x:x*fill,y:y*fill,sz:rand(.45,1.65),a:rand(.36,.98),phase:rand(0,6.28),color:pinks[i%pinks.length]};
+    });
+    galaxy = Array.from({length:1150},()=>{
+      const arm = Math.floor(Math.random()*3);
+      const radius = Math.pow(Math.random(),.62)*Math.min(w*.43, h*.29);
+      return {r:radius,a:arm*(Math.PI*2/3)+radius*.024+rand(-.45,.45),sz:rand(.35,1.35),alpha:rand(.18,.9),offset:rand(0,6.28),color:pinks[Math.floor(Math.random()*pinks.length)]};
+    });
+    floating = ['THANK YOU FOR LOVING ME','YOU ARE MY FAVORITE PERSON','SO GRATEFUL FOR YOU','MY LITTLE UNIVERSE'].map((s,i)=>({text:s,angle:i*Math.PI/2+.4,r:Math.min(w*.37,h*.27),speed:(i%2?-.00012:.00012)}));
+  }
+
+  function heartPoint(x,y,scale){
+    const cx=w*.5, cy=h*.40;
+    return [cx+x*scale, cy-y*scale];
+  }
+  function draw(time){
+    const t = reduceMotion ? 0 : time*.001;
+    ctx.clearRect(0,0,w,h);
+    const bg=ctx.createRadialGradient(w*.5,h*.43,0,w*.5,h*.43,Math.max(w,h)*.75);
+    bg.addColorStop(0,'#1b0820'); bg.addColorStop(.42,'#0b0614'); bg.addColorStop(1,'#030208');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,w,h);
+    for(const s of stars){
+      const twinkle=.55+.45*Math.sin(t*1.3+s.p);
+      ctx.globalAlpha=s.a*twinkle; ctx.fillStyle='#ffe5f8'; ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha=1;
+    const scale=Math.min(w/42,h/35)*.94;
+    const cx=w*.5, cy=h*.40;
+    // Pink spiral galaxy beneath the heart.
+    const gy=h*.67;
+    ctx.save(); ctx.translate(cx,gy); ctx.scale(1,.42);
+    const glow=ctx.createRadialGradient(0,0,1,0,0,Math.min(w*.46,h*.30));
+    glow.addColorStop(0,'rgba(255,87,205,.3)'); glow.addColorStop(.24,'rgba(239,43,182,.13)'); glow.addColorStop(1,'rgba(90,8,80,0)');
+    ctx.fillStyle=glow; ctx.beginPath(); ctx.arc(0,0,Math.min(w*.46,h*.30),0,Math.PI*2); ctx.fill();
+    for(const p of galaxy){
+      const ang=p.a + (reduceMotion?0:t*.22)*(1-p.r/(Math.min(w*.43,h*.29)+1));
+      const x=Math.cos(ang)*p.r, y=Math.sin(ang)*p.r;
+      ctx.globalAlpha=p.alpha*(.68+.32*Math.sin(t*1.4+p.offset)); ctx.fillStyle=p.color;
+      ctx.shadowBlur=5; ctx.shadowColor=p.color; ctx.beginPath(); ctx.arc(x,y,p.sz,0,Math.PI*2); ctx.fill();
+    }
+    ctx.shadowBlur=0; ctx.globalAlpha=1;
+    ctx.fillStyle='#09040e'; ctx.beginPath(); ctx.ellipse(0,0,15,7,0,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle='rgba(255,167,231,.8)'; ctx.lineWidth=1.3; ctx.beginPath(); ctx.ellipse(0,0,21,9,0,0,Math.PI*2); ctx.stroke();
+    const core=ctx.createRadialGradient(0,0,0,0,0,19); core.addColorStop(0,'#fff'); core.addColorStop(.12,'#ffb6e9'); core.addColorStop(.42,'#ff36ba'); core.addColorStop(1,'rgba(255,54,186,0)');
+    ctx.fillStyle=core; ctx.beginPath(); ctx.arc(0,0,20,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+    // Heart made from thousands of softly glowing particles.
+    const heartReveal = reduceMotion ? 1 : Math.min(1, Math.max(0, (t-1.1)/2.2));
+    for(const p of heart){
+      const pulse=1+Math.sin(t*1.7+p.phase)*.025;
+      const [x,y]=heartPoint(p.x*scale*pulse,p.y*scale*pulse,1);
+      ctx.globalAlpha=heartReveal*p.a*(.75+.25*Math.sin(t*2+p.phase)); ctx.fillStyle=p.color;
+      ctx.shadowBlur=7; ctx.shadowColor=p.color;
+      ctx.beginPath(); ctx.arc(x,y,p.sz,0,Math.PI*2); ctx.fill();
+    }
+    ctx.shadowBlur=0; ctx.globalAlpha=1;
+    // Tiny orbiting hearts and soft glints.
+    for(let i=0;i<9;i++){
+      const a=t*.16+i*Math.PI*2/9, r=Math.min(w*.42,h*.31);
+      const x=cx+Math.cos(a)*r, y=gy+Math.sin(a)*r*.42;
+      ctx.save(); ctx.translate(x,y); ctx.rotate(Math.sin(a)*.2); ctx.fillStyle=i%2?'#ff93db':'#ffd5f1'; ctx.globalAlpha=.65+.25*Math.sin(t*2+i);
+      ctx.font='15px Georgia'; ctx.fillText(i%3===0?'♡':'✦',-5,5); ctx.restore();
+    }
+    // Orbiting phrases.
+    ctx.textAlign='center'; ctx.font=`${Math.max(8,Math.min(10,w*.024))}px Arial`;
+    floating.forEach((f,i)=>{
+      const a=f.angle+(reduceMotion?0:t*f.speed*1000);
+      const x=cx+Math.cos(a)*f.r, y=gy+Math.sin(a)*f.r*.42;
+      ctx.globalAlpha=.78; ctx.fillStyle=i%2?'#ffc1ed':'#ff83d5'; ctx.fillText(f.text,x,y);
+    });
+    ctx.globalAlpha=1;
+    if(!reduceMotion) requestAnimationFrame(draw);
+  }
+  resize(); requestAnimationFrame(draw);
+  window.addEventListener('resize',resize,{passive:true});
+  const wrap=document.getElementById('letterWrap');
+  document.getElementById('openLetter').addEventListener('click',()=>wrap.classList.add('show'));
+  document.getElementById('closeLetter').addEventListener('click',()=>wrap.classList.remove('show'));
+  wrap.addEventListener('click',e=>{if(e.target===wrap)wrap.classList.remove('show')});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')wrap.classList.remove('show')});
+})();
+</script>
+</body>
+</html>
