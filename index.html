@@ -1,164 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#08030e" />
-<title>For Baby ♡</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Birthday Wish</title>
 <style>
-  :root { color-scheme: dark; --pink:#ff59c7; --hot:#ff2fa8; --soft:#ffc4ef; }
   * { box-sizing: border-box; }
-  html, body { margin:0; width:100%; min-height:100%; background:#08030e; overflow:hidden; }
-  body { font-family: Georgia, 'Times New Roman', serif; color:#fff1fb; }
-  #space { position:fixed; inset:0; width:100%; height:100%; display:block; }
-  .vignette { position:fixed; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 48%, transparent 20%, rgba(4,0,9,.24) 70%, rgba(2,0,5,.82) 100%); }
-  .intro { position:fixed; top:30%; left:0; right:0; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:18px 24px; pointer-events:none; }
-  .eyebrow { font: 11px/1.4 Arial,sans-serif; letter-spacing:.36em; text-transform:uppercase; color:#efa9e0; opacity:.9; margin-bottom:12px; text-shadow:0 0 12px #ff55c9; }
-  h1 { margin:0; font-size:clamp(46px, 13vw, 82px); font-weight:400; line-height:1; letter-spacing:.02em; color:#fff0fb; text-shadow:0 0 9px #fff, 0 0 22px #ff45c6, 0 0 54px #f500a7; }
-  .subtitle { margin-top:14px; font: 12px/1.7 Arial,sans-serif; letter-spacing:.2em; text-transform:uppercase; color:#ffd6f2; text-shadow:0 0 13px #ff38b9; }
-  .hint { position:fixed; bottom:calc(30px + env(safe-area-inset-bottom)); left:0; right:0; text-align:center; font:11px/1.5 Arial,sans-serif; letter-spacing:.18em; color:rgba(255,220,245,.76); text-transform:uppercase; animation:pulse 2.2s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:.45} 50%{opacity:1} }
-  .open-button { pointer-events:auto; margin-top:27px; border:1px solid rgba(255,175,230,.6); border-radius:999px; padding:13px 23px; background:rgba(64,9,54,.4); color:#fff1fb; font:11px Arial,sans-serif; letter-spacing:.2em; text-transform:uppercase; box-shadow:0 0 20px rgba(255,50,190,.2), inset 0 0 16px rgba(255,70,190,.08); cursor:pointer; backdrop-filter:blur(8px); transition:transform .2s, background .2s, box-shadow .2s; }
-  .open-button:active { transform:scale(.96); background:rgba(135,20,95,.55); }
-  .letter-wrap { position:fixed; inset:0; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(3,0,8,.63); backdrop-filter:blur(9px); }
-  .letter-wrap.show { display:flex; animation:fade .5s ease both; }
-  @keyframes fade { from{opacity:0} to{opacity:1} }
-  .letter { width:min(100%, 410px); max-height:min(78vh, 620px); overflow:auto; position:relative; padding:35px 27px 29px; border:1px solid rgba(255,167,226,.43); border-radius:19px; background:linear-gradient(145deg,rgba(46,9,43,.96),rgba(13,5,23,.97) 70%); text-align:center; box-shadow:0 0 45px rgba(255,43,181,.24), inset 0 0 35px rgba(255,75,194,.08); }
-  .letter:before { content:'♡'; position:absolute; top:12px; left:0; right:0; color:#ff9cde; font-size:18px; text-shadow:0 0 12px #ff38bd; }
-  .letter .small { margin:4px 0 12px; color:#ffaddf; font:10px Arial,sans-serif; letter-spacing:.32em; text-transform:uppercase; }
-  .letter h2 { margin:0 0 17px; color:#fff3fb; font-size:35px; font-weight:400; text-shadow:0 0 15px rgba(255,65,190,.7); }
-  .letter p { margin:0; color:#f8dff0; font-size:16px; line-height:1.8; }
-  .signature { margin-top:23px; color:#ff9edb; font-size:19px; font-style:italic; }
-  .close { margin-top:24px; background:transparent; border:1px solid rgba(255,174,228,.5); color:#ffe5f7; border-radius:999px; padding:10px 20px; font:10px Arial,sans-serif; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; }
-  .footer { position:fixed; bottom:10px; left:0; right:0; text-align:center; font:9px Arial,sans-serif; letter-spacing:.15em; color:rgba(255,195,232,.4); pointer-events:none; }
-  @media (max-height:650px) { .intro{top:24%} .eyebrow{margin-bottom:7px} .subtitle{margin-top:8px} .open-button{margin-top:15px} .letter{padding:30px 22px 22px} .letter p{font-size:14px;line-height:1.65} }
+  body {
+    margin: 0; min-height: 100svh; overflow: hidden;
+    display: grid; place-items: center;
+    color: #fff1fb; font-family: Georgia, "Times New Roman", serif;
+    background: radial-gradient(ellipse at 50% 65%, #351044 0%, #170c2b 42%, #050611 100%);
+  }
+  #sky { position: fixed; inset: 0; width: 100%; height: 100%; }
+  .scene {
+    position: relative; z-index: 1; width: min(94vw, 520px);
+    min-height: 90svh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 28px 18px;
+  }
+  .intro { opacity: 0; animation: appear 2.5s ease forwards; }
+  h1 { font-size: clamp(2rem, 8vw, 3.4rem); font-weight: 400; margin: 0 0 10px; text-shadow: 0 0 22px #ff9be8; }
+  .sub { color: #e7c5e8; font-size: 1rem; letter-spacing: .08em; }
+  .stage {
+    position: relative; width: 290px; height: 300px; margin-top: 18px;
+    display: grid; place-items: end center;
+  }
+  .cake {
+    position: absolute; bottom: 28px; width: 220px; height: 105px;
+    opacity: 0; transform: translateY(35px) scale(.8);
+    transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.2,.8,.2,1);
+    filter: drop-shadow(0 0 22px #ff83d4);
+  }
+  .cake.show { opacity: 1; transform: translateY(0) scale(1); }
+  .plate { position:absolute; bottom: 20px; width:250px; height:17px; border-radius:50%; background:linear-gradient(#f8d8f0,#a95c9e); box-shadow:0 0 22px #ff8bdd; }
+  .cake-top { position:absolute; top:0; left:10px; width:200px; height:35px; border-radius:50%; background:#ffd7ee; border:2px solid #fff0fa; }
+  .cake-body { position:absolute; top:17px; left:10px; width:200px; height:80px; border-radius:0 0 22px 22px; background:linear-gradient(90deg,#c56ba9,#f5a9d7 48%,#b85c9e); }
+  .icing { position:absolute; top:17px; left:10px; width:200px; height:28px; border-radius:50%; background:#fff0f8; }
+  .drip { position:absolute; top:30px; width:13px; height:24px; border-radius:0 0 10px 10px; background:#fff0f8; }
+  .d1{left:42px}.d2{left:91px;height:32px}.d3{right:43px;height:20px}
+  .sprinkle { position:absolute; z-index:2; top:8px; left:45px; width:8px; height:3px; border-radius:4px; background:#ffcc55; transform:rotate(25deg); box-shadow:35px 8px #c77cff, 72px -2px #ff83c8, 105px 8px #ffcc55; }
+  .candle-wrap { position:absolute; z-index:4; bottom:128px; opacity:0; transform:translateY(20px); transition:opacity 2s ease,transform 2s ease; }
+  .candle-wrap.show { opacity:1; transform:translateY(0); }
+  .candle { width:15px; height:72px; border-radius:5px 5px 2px 2px; background:repeating-linear-gradient(135deg,#fff0f8 0 7px,#e88acb 7px 13px); box-shadow:0 0 12px #ffb4e6; }
+  .flame {
+    position:absolute; left:2px; top:-29px; width:12px; height:25px;
+    background:radial-gradient(ellipse at 50% 70%,#fffbd0 0 18%,#ffd45e 35%,#ff8b45 70%,transparent 72%);
+    border-radius:60% 40% 55% 45%; transform-origin:50% 100%;
+    animation:flicker .8s ease-in-out infinite alternate;
+    filter:drop-shadow(0 0 10px #ffb84d);
+  }
+  .flame.off { animation:none; opacity:0; transform:scale(.2) translateY(10px); transition:all .35s ease; }
+  .hint { min-height:48px; margin-top:8px; color:#f5d7ee; font-size:1rem; opacity:0; animation:appear 1.5s 2s forwards; }
+  .wish { opacity:0; transform:translateY(15px); transition:all 1.5s ease; margin-top:8px; max-width:360px; }
+  .wish.show { opacity:1; transform:translateY(0); }
+  .wish h2 { font-size:clamp(1.5rem,6vw,2.2rem); font-weight:400; color:#ffc4e8; margin:0 0 12px; }
+  .wish p { line-height:1.65; color:#f5dff0; margin:0; font-size:1rem; }
+  .replay { margin-top:20px; border:1px solid #eaa8db; background:#ffffff12; color:#ffe8f7; padding:10px 20px; border-radius:30px; font:inherit; cursor:pointer; opacity:0; transition:opacity 1s; }
+  .replay.show { opacity:1; }
+  .replay:active { transform:scale(.97); }
+  .glow { position:absolute; width:240px; height:180px; bottom:35px; border-radius:50%; background:#ff70cf; filter:blur(75px); opacity:.15; pointer-events:none; }
+  @keyframes appear { to { opacity:1; } }
+  @keyframes flicker { from { transform:rotate(-5deg) scale(.95); } to { transform:rotate(5deg) scale(1.08); } }
+  @media (max-height:650px) { .stage{height:240px;margin-top:0}.cake{bottom:18px}.candle-wrap{bottom:115px}.scene{padding:10px} }
 </style>
 </head>
 <body>
-<canvas id="space" aria-hidden="true"></canvas>
-<div class="vignette"></div>
-<main class="intro">
-  <div class="eyebrow">a little universe, made for</div>
-  <h1>baby <span style="color:#ff8bd5">♡</span></h1>
-  <div class="subtitle">you make my universe brighter</div>
-  <button class="open-button" id="openLetter">open my heart</button>
-</main>
-<div class="hint">tap the button for a little message</div>
-<div class="letter-wrap" id="letterWrap" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
-  <section class="letter">
-    <div class="small">a note from my heart</div>
-    <h2 id="letterTitle">Thank you, baby</h2>
-    <p>
-      Thank you for loving me, baby. Thank you for making me feel cared for, appreciated, and special in your own little ways. I hope you know how grateful I am to have your love in my life. I may not always find the perfect words, but I never want you to doubt that I appreciate you. Your love means more to me than I can explain, and I promise not to take it for granted.
-      <br><br>
-      I'm so thankful for you, for every little moment, and simply for being you. Thank you for loving me. I love you, baby. ♡
-    </p>
-    <div class="signature">always grateful for you</div>
-    <button class="close" id="closeLetter">back to our galaxy</button>
+<canvas id="sky"></canvas>
+<main class="scene">
+  <div class="intro">
+    <h1>For someone special ✨</h1>
+    <div class="sub">a little birthday surprise</div>
+  </div>
+  <div class="stage" aria-label="A birthday candle and cake">
+    <div class="glow"></div>
+    <div class="cake" id="cake">
+      <div class="cake-body"></div><div class="cake-top"></div><div class="icing"></div>
+      <div class="drip d1"></div><div class="drip d2"></div><div class="drip d3"></div>
+      <div class="sprinkle"></div>
+    </div>
+    <div class="candle-wrap" id="candleWrap">
+      <div class="flame" id="flame"></div>
+      <div class="candle"></div>
+    </div>
+    <div class="plate"></div>
+  </div>
+  <div class="hint" id="hint">Make a wish, ubriii ko<br>then u pindot. 🕯️</div>
+  <section class="wish" id="wish">
+    <h2>Happy Birthday my babyyy. ♡</h2>
+    <p>Wala na po akong masabi, basta po happy birthday HAHAHA ito lang po munang cake maibibigay ko sayo:(</p>
   </section>
-</div>
-<div class="footer">MADE WITH LOVE · JUST FOR BABY</div>
+  <button class="replay" id="replay">See it again ✨</button>
+</main>
 <script>
-(() => {
-  const canvas = document.getElementById('space');
-  const ctx = canvas.getContext('2d');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let w = 0, h = 0, dpr = 1, stars = [], heart = [], galaxy = [], floating = [];
-  const pinks = ['#ff55c8','#ff8cdd','#ffd2f2','#e92bb4','#ffb0e8'];
-  const rand = (a,b) => a + Math.random()*(b-a);
-
-  function resize(){
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = window.innerWidth; h = window.innerHeight;
-    canvas.width = Math.floor(w*dpr); canvas.height = Math.floor(h*dpr);
-    canvas.style.width = w+'px'; canvas.style.height = h+'px';
+  // Twinkling stars in the background
+  const canvas = document.getElementById('sky'), ctx = canvas.getContext('2d');
+  let stars = [];
+  function resize() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = innerWidth*dpr; canvas.height = innerHeight*dpr;
+    canvas.style.width = innerWidth+'px'; canvas.style.height = innerHeight+'px';
     ctx.setTransform(dpr,0,0,dpr,0,0);
-    stars = Array.from({length:Math.min(230,Math.floor(w*h/3000))},()=>({x:Math.random()*w,y:Math.random()*h,r:rand(.35,1.35),a:rand(.2,.9),p:rand(0,Math.PI*2)}));
-    heart = Array.from({length:900},(_,i)=>{
-      const t = Math.random()*Math.PI*2;
-      const fill = Math.sqrt(Math.random());
-      const x = 16*Math.pow(Math.sin(t),3);
-      const y = 13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
-      return {x:x*fill,y:y*fill,sz:rand(.45,1.65),a:rand(.36,.98),phase:rand(0,6.28),color:pinks[i%pinks.length]};
-    });
-    galaxy = Array.from({length:1150},()=>{
-      const arm = Math.floor(Math.random()*3);
-      const radius = Math.pow(Math.random(),.62)*Math.min(w*.43, h*.29);
-      return {r:radius,a:arm*(Math.PI*2/3)+radius*.024+rand(-.45,.45),sz:rand(.35,1.35),alpha:rand(.18,.9),offset:rand(0,6.28),color:pinks[Math.floor(Math.random()*pinks.length)]};
-    });
-    floating = ['THANK YOU FOR LOVING ME','YOU ARE MY FAVORITE PERSON','SO GRATEFUL FOR YOU','MY LITTLE UNIVERSE'].map((s,i)=>({text:s,angle:i*Math.PI/2+.4,r:Math.min(w*.37,h*.27),speed:(i%2?-.00012:.00012)}));
+    stars = Array.from({length: Math.floor(innerWidth*innerHeight/1800)}, () => ({
+      x:Math.random()*innerWidth, y:Math.random()*innerHeight,
+      r:Math.random()*1.7+.3, a:Math.random()*.7+.2, s:Math.random()*.018+.004
+    }));
   }
+  function draw() {
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    for (const s of stars) {
+      s.a += s.s; if(s.a>.95 || s.a<.15) s.s *= -1;
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,205,245,${s.a})`; ctx.shadowBlur=8; ctx.shadowColor='#f58bdc'; ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  resize(); draw(); addEventListener('resize',resize);
 
-  function heartPoint(x,y,scale){
-    const cx=w*.5, cy=h*.40;
-    return [cx+x*scale, cy-y*scale];
+  const candleWrap=document.getElementById('candleWrap');
+  const flame=document.getElementById('flame');
+  const cake=document.getElementById('cake');
+  const hint=document.getElementById('hint');
+  const wish=document.getElementById('wish');
+  const replay=document.getElementById('replay');
+  let blown=false;
+
+  // Let the candle appear slowly after the greeting.
+  setTimeout(()=>candleWrap.classList.add('show'),1800);
+
+  function blowOut(e) {
+    if (blown) return;
+    blown=true;
+    flame.classList.add('off');
+    hint.textContent='Your wish is on its way… ♡';
+    // A soft smoke puff, followed by the cake reveal.
+    const smoke=document.createElement('div');
+    smoke.textContent='☁'; smoke.style.cssText='position:absolute;bottom:220px;font-size:30px;color:#f7dff2;opacity:.8;animation:smoke 1.5s forwards;pointer-events:none';
+    candleWrap.appendChild(smoke);
+    const style=document.createElement('style');
+    style.textContent='@keyframes smoke{to{transform:translateY(-45px) scale(1.8);opacity:0}}';
+    document.head.appendChild(style);
+    setTimeout(()=>{ cake.classList.add('show'); hint.style.opacity='0'; },650);
+    setTimeout(()=>{ wish.classList.add('show'); replay.classList.add('show'); },1450);
   }
-  function draw(time){
-    const t = reduceMotion ? 0 : time*.001;
-    ctx.clearRect(0,0,w,h);
-    const bg=ctx.createRadialGradient(w*.5,h*.43,0,w*.5,h*.43,Math.max(w,h)*.75);
-    bg.addColorStop(0,'#1b0820'); bg.addColorStop(.42,'#0b0614'); bg.addColorStop(1,'#030208');
-    ctx.fillStyle=bg; ctx.fillRect(0,0,w,h);
-    for(const s of stars){
-      const twinkle=.55+.45*Math.sin(t*1.3+s.p);
-      ctx.globalAlpha=s.a*twinkle; ctx.fillStyle='#ffe5f8'; ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill();
-    }
-    ctx.globalAlpha=1;
-    const scale=Math.min(w/42,h/35)*.94;
-    const cx=w*.5, cy=h*.40;
-    // Pink spiral galaxy beneath the heart.
-    const gy=h*.67;
-    ctx.save(); ctx.translate(cx,gy); ctx.scale(1,.42);
-    const glow=ctx.createRadialGradient(0,0,1,0,0,Math.min(w*.46,h*.30));
-    glow.addColorStop(0,'rgba(255,87,205,.3)'); glow.addColorStop(.24,'rgba(239,43,182,.13)'); glow.addColorStop(1,'rgba(90,8,80,0)');
-    ctx.fillStyle=glow; ctx.beginPath(); ctx.arc(0,0,Math.min(w*.46,h*.30),0,Math.PI*2); ctx.fill();
-    for(const p of galaxy){
-      const ang=p.a + (reduceMotion?0:t*.22)*(1-p.r/(Math.min(w*.43,h*.29)+1));
-      const x=Math.cos(ang)*p.r, y=Math.sin(ang)*p.r;
-      ctx.globalAlpha=p.alpha*(.68+.32*Math.sin(t*1.4+p.offset)); ctx.fillStyle=p.color;
-      ctx.shadowBlur=5; ctx.shadowColor=p.color; ctx.beginPath(); ctx.arc(x,y,p.sz,0,Math.PI*2); ctx.fill();
-    }
-    ctx.shadowBlur=0; ctx.globalAlpha=1;
-    ctx.fillStyle='#09040e'; ctx.beginPath(); ctx.ellipse(0,0,15,7,0,0,Math.PI*2); ctx.fill();
-    ctx.strokeStyle='rgba(255,167,231,.8)'; ctx.lineWidth=1.3; ctx.beginPath(); ctx.ellipse(0,0,21,9,0,0,Math.PI*2); ctx.stroke();
-    const core=ctx.createRadialGradient(0,0,0,0,0,19); core.addColorStop(0,'#fff'); core.addColorStop(.12,'#ffb6e9'); core.addColorStop(.42,'#ff36ba'); core.addColorStop(1,'rgba(255,54,186,0)');
-    ctx.fillStyle=core; ctx.beginPath(); ctx.arc(0,0,20,0,Math.PI*2); ctx.fill();
-    ctx.restore();
-    // Heart made from thousands of softly glowing particles.
-    const heartReveal = reduceMotion ? 1 : Math.min(1, Math.max(0, (t-1.1)/2.2));
-    for(const p of heart){
-      const pulse=1+Math.sin(t*1.7+p.phase)*.025;
-      const [x,y]=heartPoint(p.x*scale*pulse,p.y*scale*pulse,1);
-      ctx.globalAlpha=heartReveal*p.a*(.75+.25*Math.sin(t*2+p.phase)); ctx.fillStyle=p.color;
-      ctx.shadowBlur=7; ctx.shadowColor=p.color;
-      ctx.beginPath(); ctx.arc(x,y,p.sz,0,Math.PI*2); ctx.fill();
-    }
-    ctx.shadowBlur=0; ctx.globalAlpha=1;
-    // Tiny orbiting hearts and soft glints.
-    for(let i=0;i<9;i++){
-      const a=t*.16+i*Math.PI*2/9, r=Math.min(w*.42,h*.31);
-      const x=cx+Math.cos(a)*r, y=gy+Math.sin(a)*r*.42;
-      ctx.save(); ctx.translate(x,y); ctx.rotate(Math.sin(a)*.2); ctx.fillStyle=i%2?'#ff93db':'#ffd5f1'; ctx.globalAlpha=.65+.25*Math.sin(t*2+i);
-      ctx.font='15px Georgia'; ctx.fillText(i%3===0?'♡':'✦',-5,5); ctx.restore();
-    }
-    // Orbiting phrases.
-    ctx.textAlign='center'; ctx.font=`${Math.max(8,Math.min(10,w*.024))}px Arial`;
-    floating.forEach((f,i)=>{
-      const a=f.angle+(reduceMotion?0:t*f.speed*1000);
-      const x=cx+Math.cos(a)*f.r, y=gy+Math.sin(a)*f.r*.42;
-      ctx.globalAlpha=.78; ctx.fillStyle=i%2?'#ffc1ed':'#ff83d5'; ctx.fillText(f.text,x,y);
-    });
-    ctx.globalAlpha=1;
-    if(!reduceMotion) requestAnimationFrame(draw);
-  }
-  resize(); requestAnimationFrame(draw);
-  window.addEventListener('resize',resize,{passive:true});
-  const wrap=document.getElementById('letterWrap');
-  document.getElementById('openLetter').addEventListener('click',()=>wrap.classList.add('show'));
-  document.getElementById('closeLetter').addEventListener('click',()=>wrap.classList.remove('show'));
-  wrap.addEventListener('click',e=>{if(e.target===wrap)wrap.classList.remove('show')});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')wrap.classList.remove('show')});
-})();
+  flame.addEventListener('click',blowOut);
+  flame.addEventListener('touchstart',blowOut,{passive:true});
+  // Also allow tapping the candle itself on touch screens.
+  candleWrap.addEventListener('click',blowOut);
+
+  replay.addEventListener('click',()=>{
+    blown=false; flame.classList.remove('off'); cake.classList.remove('show');
+    wish.classList.remove('show'); replay.classList.remove('show');
+    hint.textContent='Make a wish, my love… then tap the little flame. 🕯️';
+    hint.style.opacity='1'; candleWrap.classList.remove('show');
+    setTimeout(()=>candleWrap.classList.add('show'),500);
+  });
 </script>
 </body>
 </html>
